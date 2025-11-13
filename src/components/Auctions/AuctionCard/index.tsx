@@ -3,6 +3,7 @@ import Button from "@mui/material/Button"
 import Card from "@mui/material/Card"
 import Typography from "@mui/material/Typography"
 import type { AddressLike, ethers } from "ethers"
+import { ZeroAddress } from "ethers/constants"
 import type { JSX } from "react"
 import { useState } from "react"
 import toast from "react-hot-toast"
@@ -111,7 +112,7 @@ const AuctionCard = ({
       toast.promise(promise, {
         loading: "Checking winner...",
         success: (winner) =>
-          winner && winner !== "0x0000000000000000000000000000000000000000"
+          winner && winner !== ZeroAddress
             ? `Winner: ${shortenAddress(winner)}`
             : "No winner yet.",
         error: (err) => err?.reason || err?.message || "Failed to check winner",
